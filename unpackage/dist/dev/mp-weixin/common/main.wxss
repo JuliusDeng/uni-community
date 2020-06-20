@@ -4816,6 +4816,13 @@ to {
 }
 }
 /* 自定义样式库 */
+
+/* scroll-view */
+.scroll-row{ width: 100%;white-space: nowrap;
+}
+.scroll-row-item{ display: inline-block!important;
+}
+
 /* 图标 */
 .iconfont{
 	font-family:iconfont;

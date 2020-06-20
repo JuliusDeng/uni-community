@@ -147,12 +147,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
 {
   components: {
     commonList: commonList },
 
   data: function data() {
     return {
+      scrollInto: '',
+      tabIndex: 0,
+      tabBars: [{
+        name: '关注' },
+      {
+        name: '推荐' },
+      {
+        name: '体育' },
+      {
+        name: '热点' },
+      {
+        name: '财经' },
+      {
+        name: '娱乐' },
+      {
+        name: '军事' },
+      {
+        name: '历史' },
+      {
+        name: '本地' }],
+
       list: [
       {
         username: "昵称",
@@ -162,7 +189,7 @@ __webpack_require__.r(__webpack_exports__);
         title: "我是标题",
         titlepic: "/static/demo/datapic/11.jpg",
         support: {
-          type: "support",
+          type: "",
           support_count: 1,
           unsupport_count: 2 },
 
@@ -178,8 +205,8 @@ __webpack_require__.r(__webpack_exports__);
         titlepic: "",
         support: {
           type: "support",
-          support_count: 1,
-          unsupport_count: 2 },
+          support_count: 2,
+          unsupport_count: 3 },
 
         comment_count: 2,
         share_num: 2 },
@@ -192,7 +219,7 @@ __webpack_require__.r(__webpack_exports__);
         title: "我是标题",
         titlepic: "/static/demo/datapic/11.jpg",
         support: {
-          type: "support",
+          type: "unsupport",
           support_count: 1,
           unsupport_count: 2 },
 
@@ -222,12 +249,42 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   methods: {
+    // 顶部 切换选项卡
+    changeTab: function changeTab(index) {
+      if (this.tabIndex === index) {
+        return;
+      }
+      this.tabIndex = index;
+      // 滚到指定元素
+      this.scrollInto = 'tab' + index;
+    },
     // 关注
     follow: function follow(e) {
       this.list[e].isFollow = true;
       uni.showToast({
         title: '关注成功' });
 
+    },
+    // 顶踩操作
+    doSupport: function doSupport(e) {
+      console.log(e, e.type, e.index);
+      // 拿到当前对象
+      var item = this.list[e.index];
+      // 判断之前没有顶踩过
+      if (item.support.type === '') {
+        // 控制顶踩数目变化
+        item.support[e.type + '_count']++;
+      } else if (item.support.type === 'support' && e.type === 'unsupport') {
+        // 之前顶过，现在传踩
+        item.support.support_count--;
+        item.support.unsupport_count++;
+      } else if (item.support.type === 'unsupport' && e.type === 'support') {
+        // 之前踩过，现在传顶
+        item.support.support_count++;
+        item.support.unsupport_count--;
+      }
+      // 控制点击顶踩之后的颜色变化
+      item.support.type = e.type;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

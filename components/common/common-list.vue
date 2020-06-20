@@ -29,12 +29,12 @@
 		<!-- 图标按钮 -->
 		<view class="flex align-center">
 			<!-- 顶 -->
-			<view class="flex align-center justify-center flex-1 animated faster" hover-class="jello text-main" @click="doSupport('support')">
+			<view class="flex align-center justify-center flex-1 animated faster" hover-class="jello text-main" @click="doSupport('support')" :class="item.support.type == 'support' ? 'support-active' : '' ">
 				<text class="iconfont icon-dianzan2 mr-2"></text>
 				<text>{{item.support.support_count}}</text>
 			</view>
 			<!-- 踩 -->
-			<view class="flex align-center justify-center flex-1 animated faster" hover-class="jello text-main" @click="doSupport('unsupport')">
+			<view class="flex align-center justify-center flex-1 animated faster" hover-class="jello text-main" @click="doSupport('unsupport')" :class="item.support.type == 'unsupport' ? 'support-active' : '' ">
 				<text class="iconfont icon-cai mr-2"></text>
 				<text>{{item.support.unsupport_count}}</text>
 			</view>
@@ -72,11 +72,18 @@
 			},
 			// 顶踩操作
 			doSupport(type){
-				console.log(type);
+				console.log(type + '');
+				this.$emit('doSupport', {
+					type: type,
+					index: this.index
+				})
 			}
 		}
 	}
 </script>
 
 <style>
+	.support-active {
+		color: #FF4A6A;
+	}
 </style>
