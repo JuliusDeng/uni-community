@@ -4826,7 +4826,7 @@ to {
 	color:#0E151D;
 }
 /* 宽度 */
-.w-100{ width: 750rpx;
+.w-100{ width: 100%;
 }
 .row {
   margin-right: -20rpx;
@@ -5198,6 +5198,7 @@ to {
 .text-hover-dark{ color: #121416;}
 .text-body { color: #212529;}
 .text-muted { color: #6c757d;}
+/* 浅灰色 */
 .text-light-muted { color: #A9A5A0;}
 .text-light-black { color: rgba(0, 0, 0, 0.5);}
 .text-light-white { color: rgba(255, 255, 255, 0.5);}
@@ -5320,4 +5321,12 @@ to {
 .shadow-lg { box-shadow: 0rpx 40rpx 100rpx 0rpx rgba(0, 0, 0, 0.175);}
 .shadow-none { box-shadow: none !important;}
 
+/* 自定义全局样式 */
+/* 本项目公共样式 */
+.bg-main {
+	background-color: #FF4A6A;
+}
+.text-main {
+	color: #FF4A6A;
+}
 

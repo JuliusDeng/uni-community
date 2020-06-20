@@ -8,7 +8,9 @@
 	color:#0E151D;
 }
 /* 宽度 */
-.w-100{ width: 750rpx; }
+/* #ifndef APP-PLUS-NVUE */
+.w-100{ width: 100%; }
+/* #endif */
 
 .row {
   margin-right: -20rpx;
@@ -220,18 +222,18 @@
 .px-4 { padding-left: 40rpx; padding-right: 40rpx;}
 .px-5 { padding-left: 50rpx; padding-right: 50rpx;}
 /* 文字大小 */
-.font-smaller { font-size: 15upx;}
-.font-small { font-size: 20upx;}
-.font-sm { font-size: 25upx;}
-.font { font-size: 30upx;}
-.font-md { font-size: 35upx;}
-.font-lg { font-size: 40upx;}
-.h1{font-size:80upx; line-height:1.8;}
-.h2{font-size:60upx; line-height:1.8;}
-.h3{font-size:45upx; line-height:1.8;}
-.h4{font-size:32upx; line-height:1.8;}
-.h5{font-size:30upx; line-height:1.8;}
-.h6{font-size:28upx; line-height:1.8;}
+.font-smaller { font-size: 15rpx;}
+.font-small { font-size: 20rpx;}
+.font-sm { font-size: 25rpx;}
+.font { font-size: 30rpx;}
+.font-md { font-size: 35rpx;}
+.font-lg { font-size: 40rpx;}
+.h1{font-size:80rpx; line-height:1.8;}
+.h2{font-size:60rpx; line-height:1.8;}
+.h3{font-size:45rpx; line-height:1.8;}
+.h4{font-size:32rpx; line-height:1.8;}
+.h5{font-size:30rpx; line-height:1.8;}
+.h6{font-size:28rpx; line-height:1.8;}
 /* 文字缩进 */
 /* #ifndef APP-PLUS-NVUE */
 .text-indent{text-indent:2;}
@@ -278,6 +280,7 @@
 .text-hover-dark{ color: #121416;}
 .text-body { color: #212529;}
 .text-muted { color: #6c757d;}
+/* 浅灰色 */
 .text-light-muted { color: #A9A5A0;}
 .text-light-black { color: rgba(0, 0, 0, 0.5);}
 .text-light-white { color: rgba(255, 255, 255, 0.5);}
@@ -393,8 +396,8 @@
 
 /* 阴影 */
 /* #ifndef APP-PLUS-NVUE */
-.shadow { box-shadow: 0 2upx 12upx rgba(0, 0, 0, 0.15);}
-.shadow-lg { box-shadow: 0upx 40upx 100upx 0upx rgba(0, 0, 0, 0.175);}
+.shadow { box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.15);}
+.shadow-lg { box-shadow: 0rpx 40rpx 100rpx 0rpx rgba(0, 0, 0, 0.175);}
 .shadow-none { box-shadow: none !important;}
 /* #endif */
 

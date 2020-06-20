@@ -25,4 +25,6 @@
 	@import "./common/animate.css";
 	/* 自定义样式库 */
 	@import "./common/free.css";
+	/* 自定义全局样式 */
+	@import url("./common/common.css");
 </style>
