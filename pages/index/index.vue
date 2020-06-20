@@ -9,13 +9,14 @@
 		<!-- 对应滑块区域 -->
 		<swiper :duration="150" :current="tabIndex" @change="onChangeTab" :style="'height:' + scrollH + 'px'">
 			<swiper-item v-for="(item, index) in newsList" :key="index">
-				<scroll-view scroll-y="true" :style="'height:' + scrollH + 'px'">
+				<scroll-view scroll-y="true" :style="'height:' + scrollH + 'px'" @scrolltolower="loadmore(index)">
 						<!-- 列表样式 -->
 					<block v-for="(item2, index2) in item.list" :key="index2">
 						<common-list v-bind:item="item2" v-bind:index="index2" v-on:follow="follow" @doSupport='doSupport'></common-list>
 						<divider/>
 					</block>
-					
+					<!-- 上拉加载 -->
+					<load-more :loadmore="item.loadmore"></load-more>
 				</scroll-view>
 			</swiper-item>
 		</swiper>
@@ -26,10 +27,12 @@
 
 <script>
 	import commonList from "@/components/common/common-list.vue"
+	import loadMore from "@/components/common/load-more.vue"
 	
 	export default {
 		components: {
 			commonList,
+			loadMore
 		},
 		data() {
 			return {
@@ -72,17 +75,21 @@
 			this.getData()
 		},
 		methods: {
+			// 获取数据
 			getData() {
 				var arr = []
 				for (let i = 0; i < this.tabBars.length; i++) {
+					// 生成列表模板
 					let obj = {
+						// 1.上拉加载更多  2.加载中... 3.没有更多了
+						loadmore: '上拉加载更多',
 						list:[
 							{
 								username:"昵称",
 								userpic:"/static/default.jpg",
 								newstime:"2019-10-20 下午04:30",
 								isFollow:false,
-								title:"我是标题",
+								title:"我是标题1",
 								titlepic:"/static/demo/datapic/11.jpg",
 								support:{
 									type:"",
@@ -97,7 +104,7 @@
 								userpic:"/static/default.jpg",
 								newstime:"2019-10-20 下午04:30",
 								isFollow:false,
-								title:"我是标题",
+								title:"我是标题2",
 								titlepic:"",
 								support:{
 									type:"support",
@@ -112,25 +119,10 @@
 								userpic:"/static/default.jpg",
 								newstime:"2019-10-20 下午04:30",
 								isFollow:false,
-								title:"我是标题",
+								title:"我是标题3",
 								titlepic:"/static/demo/datapic/11.jpg",
 								support:{
 									type:"unsupport",
-									support_count:1,
-									unsupport_count:2
-								},
-								comment_count:2,
-								share_num:2
-							},
-							{
-								username:"昵称",
-								userpic:"/static/default.jpg",
-								newstime:"2019-10-20 下午04:30",
-								isFollow:false,
-								title:"我是标题",
-								titlepic:"/static/demo/datapic/11.jpg",
-								support:{
-									type:"support",
 									support_count:1,
 									unsupport_count:2
 								},
@@ -185,7 +177,25 @@
 				}
 				// 控制点击顶踩之后的颜色变化
 				item.support.type = e.type	
+			},
+			// 上拉加载更多
+			loadmore(index) {
+				// 拿到当前列表
+				let item = this.newsList[index]
+				// （优化）判断是否处于可加载状态（如果是已经处于“加载中”或“没有更多了”是不应该触发加载的）
+				if(item.loadmore !== '上拉加载更多') return
+				// 修改当前列表的加载状态
+				item.loadmore = '加载中...'
+				console.log('上拉加载更多');
+				// 模拟获取后端数据
+				setTimeout(() => {
+					// 加载数据
+					item.list = [...item.list, ...item.list]
+					// 恢复加载状态
+					item.loadmore = '上拉加载更多'
+				}, 8000)
 			}
+			
 		}
 	}
 </script>
