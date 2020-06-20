@@ -1,16 +1,25 @@
 <template>
 	<view>
 		<!-- 顶部选项卡 -->
-		<scroll-view scroll-x class="scroll-row" :scroll-into-view="scrollInto" scroll-with-animation>
+		<scroll-view scroll-x class="scroll-row" :scroll-into-view="scrollInto" scroll-with-animation style="height: 100rpx;">
 			<view v-for="(item, index) in tabBars" :key="index" class="scroll-row-item px-3 py-2 font-md" :id="'tab' + index" :class="tabIndex === index ? 'text-main font-lg font-weight-bold' : ''" @click="changeTab(index)">
 				{{item.name}}
 			</view>
 		</scroll-view>
-		<!-- 列表样式 -->
-		<block v-for="(item, index) in list" :key="index">
-			<common-list v-bind:item="item" v-bind:index="index" v-on:follow="follow" @doSupport='doSupport'></common-list>
-			<divider/>
-		</block>
+		<!-- 对应滑块区域 -->
+		<swiper :duration="150" :current="tabIndex" @change="onChangeTab" :style="'height:' + scrollH + 'px'">
+			<swiper-item v-for="(item, index) in newsList" :key="index">
+				<scroll-view scroll-y="true" :style="'height:' + scrollH + 'px'">
+						<!-- 列表样式 -->
+					<block v-for="(item2, index2) in item.list" :key="index2">
+						<common-list v-bind:item="item2" v-bind:index="index2" v-on:follow="follow" @doSupport='doSupport'></common-list>
+						<divider/>
+					</block>
+					
+				</scroll-view>
+			</swiper-item>
+		</swiper>
+		
 		
 	</view>
 </template>
@@ -24,6 +33,9 @@
 		},
 		data() {
 			return {
+				// 列表高度设置
+				scrollH: 555,
+				// 顶部选项卡
 				scrollInto: '',
 				tabIndex: 0,
 				tabBars: [{
@@ -45,76 +57,94 @@
 				}, {
 				    name: '本地',
 				}],
-				list:[
-					{
-						username:"昵称",
-						userpic:"/static/default.jpg",
-						newstime:"2019-10-20 下午04:30",
-						isFollow:false,
-						title:"我是标题",
-						titlepic:"/static/demo/datapic/11.jpg",
-						support:{
-							type:"",
-							support_count:1,
-							unsupport_count:2
-						},
-						comment_count:2,
-						share_num:2
-					},
-					{
-						username:"昵称",
-						userpic:"/static/default.jpg",
-						newstime:"2019-10-20 下午04:30",
-						isFollow:false,
-						title:"我是标题",
-						titlepic:"",
-						support:{
-							type:"support",
-							support_count:2,
-							unsupport_count:3
-						},
-						comment_count:2,
-						share_num:2
-					},
-					{
-						username:"昵称",
-						userpic:"/static/default.jpg",
-						newstime:"2019-10-20 下午04:30",
-						isFollow:false,
-						title:"我是标题",
-						titlepic:"/static/demo/datapic/11.jpg",
-						support:{
-							type:"unsupport",
-							support_count:1,
-							unsupport_count:2
-						},
-						comment_count:2,
-						share_num:2
-					},
-					{
-						username:"昵称",
-						userpic:"/static/default.jpg",
-						newstime:"2019-10-20 下午04:30",
-						isFollow:false,
-						title:"我是标题",
-						titlepic:"/static/demo/datapic/11.jpg",
-						support:{
-							type:"support",
-							support_count:1,
-							unsupport_count:2
-						},
-						comment_count:2,
-						share_num:2
-					},
-					
-				]
+				newsList: []
 			}
 		},
+		// 监听页面加载，其参数为上个页面传递的数据（可用于页面间通讯哦）		
 		onLoad() {
-
+			// 获取屏幕列表高度
+			uni.getSystemInfo({
+				success: res => {
+					this.scrollH = res.windowHeight - uni.upx2px(100)
+				}
+			})
+			// 根据选项卡生成列表
+			this.getData()
 		},
 		methods: {
-			// 顶部 切换选项卡
+			getData() {
+				var arr = []
+				for (let i = 0; i < this.tabBars.length; i++) {
+					let obj = {
+						list:[
+							{
+								username:"昵称",
+								userpic:"/static/default.jpg",
+								newstime:"2019-10-20 下午04:30",
+								isFollow:false,
+								title:"我是标题",
+								titlepic:"/static/demo/datapic/11.jpg",
+								support:{
+									type:"",
+									support_count:1,
+									unsupport_count:2
+								},
+								comment_count:2,
+								share_num:2
+							},
+							{
+								username:"昵称",
+								userpic:"/static/default.jpg",
+								newstime:"2019-10-20 下午04:30",
+								isFollow:false,
+								title:"我是标题",
+								titlepic:"",
+								support:{
+									type:"support",
+									support_count:2,
+									unsupport_count:3
+								},
+								comment_count:2,
+								share_num:2
+							},
+							{
+								username:"昵称",
+								userpic:"/static/default.jpg",
+								newstime:"2019-10-20 下午04:30",
+								isFollow:false,
+								title:"我是标题",
+								titlepic:"/static/demo/datapic/11.jpg",
+								support:{
+									type:"unsupport",
+									support_count:1,
+									unsupport_count:2
+								},
+								comment_count:2,
+								share_num:2
+							},
+							{
+								username:"昵称",
+								userpic:"/static/default.jpg",
+								newstime:"2019-10-20 下午04:30",
+								isFollow:false,
+								title:"我是标题",
+								titlepic:"/static/demo/datapic/11.jpg",
+								support:{
+									type:"support",
+									support_count:1,
+									unsupport_count:2
+								},
+								comment_count:2,
+								share_num:2
+							},
+							
+						]
+					}
+					arr.push(obj)
+				}
+				this.newsList = arr
+			},
+			// 切换 顶部选项卡
 			changeTab(index) {
 				if(this.tabIndex === index) {
 					return
@@ -122,6 +152,11 @@
 				this.tabIndex = index
 				// 滚到指定元素
 				this.scrollInto = 'tab' + index
+			},
+			// 监听滑动
+			onChangeTab(e) {
+				console.log(e);
+				this.changeTab(e.detail.current)
 			},
 			// 关注
 			follow(e) {

@@ -153,12 +153,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
 {
   components: {
     commonList: commonList },
 
   data: function data() {
     return {
+      // 列表高度设置
+      scrollH: 555,
+      // 顶部选项卡
       scrollInto: '',
       tabIndex: 0,
       tabBars: [{
@@ -180,76 +192,94 @@ __webpack_require__.r(__webpack_exports__);
       {
         name: '本地' }],
 
-      list: [
-      {
-        username: "昵称",
-        userpic: "/static/default.jpg",
-        newstime: "2019-10-20 下午04:30",
-        isFollow: false,
-        title: "我是标题",
-        titlepic: "/static/demo/datapic/11.jpg",
-        support: {
-          type: "",
-          support_count: 1,
-          unsupport_count: 2 },
-
-        comment_count: 2,
-        share_num: 2 },
-
-      {
-        username: "昵称",
-        userpic: "/static/default.jpg",
-        newstime: "2019-10-20 下午04:30",
-        isFollow: false,
-        title: "我是标题",
-        titlepic: "",
-        support: {
-          type: "support",
-          support_count: 2,
-          unsupport_count: 3 },
-
-        comment_count: 2,
-        share_num: 2 },
-
-      {
-        username: "昵称",
-        userpic: "/static/default.jpg",
-        newstime: "2019-10-20 下午04:30",
-        isFollow: false,
-        title: "我是标题",
-        titlepic: "/static/demo/datapic/11.jpg",
-        support: {
-          type: "unsupport",
-          support_count: 1,
-          unsupport_count: 2 },
-
-        comment_count: 2,
-        share_num: 2 },
-
-      {
-        username: "昵称",
-        userpic: "/static/default.jpg",
-        newstime: "2019-10-20 下午04:30",
-        isFollow: false,
-        title: "我是标题",
-        titlepic: "/static/demo/datapic/11.jpg",
-        support: {
-          type: "support",
-          support_count: 1,
-          unsupport_count: 2 },
-
-        comment_count: 2,
-        share_num: 2 }] };
-
-
-
+      newsList: [] };
 
   },
-  onLoad: function onLoad() {
+  // 监听页面加载，其参数为上个页面传递的数据（可用于页面间通讯哦）		
+  onLoad: function onLoad() {var _this = this;
+    // 获取屏幕列表高度
+    uni.getSystemInfo({
+      success: function success(res) {
+        _this.scrollH = res.windowHeight - uni.upx2px(100);
+      } });
 
+    // 根据选项卡生成列表
+    this.getData();
   },
   methods: {
-    // 顶部 切换选项卡
+    getData: function getData() {
+      var arr = [];
+      for (var i = 0; i < this.tabBars.length; i++) {
+        var obj = {
+          list: [
+          {
+            username: "昵称",
+            userpic: "/static/default.jpg",
+            newstime: "2019-10-20 下午04:30",
+            isFollow: false,
+            title: "我是标题",
+            titlepic: "/static/demo/datapic/11.jpg",
+            support: {
+              type: "",
+              support_count: 1,
+              unsupport_count: 2 },
+
+            comment_count: 2,
+            share_num: 2 },
+
+          {
+            username: "昵称",
+            userpic: "/static/default.jpg",
+            newstime: "2019-10-20 下午04:30",
+            isFollow: false,
+            title: "我是标题",
+            titlepic: "",
+            support: {
+              type: "support",
+              support_count: 2,
+              unsupport_count: 3 },
+
+            comment_count: 2,
+            share_num: 2 },
+
+          {
+            username: "昵称",
+            userpic: "/static/default.jpg",
+            newstime: "2019-10-20 下午04:30",
+            isFollow: false,
+            title: "我是标题",
+            titlepic: "/static/demo/datapic/11.jpg",
+            support: {
+              type: "unsupport",
+              support_count: 1,
+              unsupport_count: 2 },
+
+            comment_count: 2,
+            share_num: 2 },
+
+          {
+            username: "昵称",
+            userpic: "/static/default.jpg",
+            newstime: "2019-10-20 下午04:30",
+            isFollow: false,
+            title: "我是标题",
+            titlepic: "/static/demo/datapic/11.jpg",
+            support: {
+              type: "support",
+              support_count: 1,
+              unsupport_count: 2 },
+
+            comment_count: 2,
+            share_num: 2 }] };
+
+
+
+
+        arr.push(obj);
+      }
+      this.newsList = arr;
+    },
+    // 切换 顶部选项卡
     changeTab: function changeTab(index) {
       if (this.tabIndex === index) {
         return;
@@ -257,6 +287,11 @@ __webpack_require__.r(__webpack_exports__);
       this.tabIndex = index;
       // 滚到指定元素
       this.scrollInto = 'tab' + index;
+    },
+    // 监听滑动
+    onChangeTab: function onChangeTab(e) {
+      console.log(e);
+      this.changeTab(e.detail.current);
     },
     // 关注
     follow: function follow(e) {
