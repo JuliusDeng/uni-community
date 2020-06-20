@@ -45,6 +45,7 @@
     ]
   },
   "usingComponents": {
-    "divider": "/components/common/divider"
+    "divider": "/components/common/divider",
+    "nothing": "/components/common/nothing"
   }
 }

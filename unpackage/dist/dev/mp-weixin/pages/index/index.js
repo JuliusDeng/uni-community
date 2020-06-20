@@ -133,32 +133,85 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var commonList = function commonList() {__webpack_require__.e(/*! require.ensure | components/common/common-list */ "components/common/common-list").then((function () {return resolve(__webpack_require__(/*! @/components/common/common-list.vue */ 40));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var loadMore = function loadMore() {__webpack_require__.e(/*! require.ensure | components/common/load-more */ "components/common/load-more").then((function () {return resolve(__webpack_require__(/*! @/components/common/load-more.vue */ 49));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
+var demo = [
+{
+  username: "昵称",
+  userpic: "/static/default.jpg",
+  newstime: "2019-10-20 下午04:30",
+  isFollow: false,
+  title: "我是标题1",
+  titlepic: "/static/demo/datapic/11.jpg",
+  support: {
+    type: "",
+    support_count: 1,
+    unsupport_count: 2 },
 
+  comment_count: 2,
+  share_num: 2 },
 
+{
+  username: "昵称",
+  userpic: "/static/default.jpg",
+  newstime: "2019-10-20 下午04:30",
+  isFollow: false,
+  title: "我是标题2",
+  titlepic: "",
+  support: {
+    type: "support",
+    support_count: 2,
+    unsupport_count: 3 },
 
+  comment_count: 2,
+  share_num: 2 },
 
+{
+  username: "昵称",
+  userpic: "/static/default.jpg",
+  newstime: "2019-10-20 下午04:30",
+  isFollow: false,
+  title: "我是标题3",
+  titlepic: "/static/demo/datapic/11.jpg",
+  support: {
+    type: "unsupport",
+    support_count: 1,
+    unsupport_count: 2 },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  comment_count: 2,
+  share_num: 2 }];var commonList = function commonList() {__webpack_require__.e(/*! require.ensure | components/common/common-list */ "components/common/common-list").then((function () {return resolve(__webpack_require__(/*! @/components/common/common-list.vue */ 40));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var loadMore = function loadMore() {__webpack_require__.e(/*! require.ensure | components/common/load-more */ "components/common/load-more").then((function () {return resolve(__webpack_require__(/*! @/components/common/load-more.vue */ 47));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -218,57 +271,14 @@ __webpack_require__.r(__webpack_exports__);
         var obj = {
           // 1.上拉加载更多  2.加载中... 3.没有更多了
           loadmore: '上拉加载更多',
-          list: [
-          {
-            username: "昵称",
-            userpic: "/static/default.jpg",
-            newstime: "2019-10-20 下午04:30",
-            isFollow: false,
-            title: "我是标题1",
-            titlepic: "/static/demo/datapic/11.jpg",
-            support: {
-              type: "",
-              support_count: 1,
-              unsupport_count: 2 },
+          list: [] };
 
-            comment_count: 2,
-            share_num: 2 },
-
-          {
-            username: "昵称",
-            userpic: "/static/default.jpg",
-            newstime: "2019-10-20 下午04:30",
-            isFollow: false,
-            title: "我是标题2",
-            titlepic: "",
-            support: {
-              type: "support",
-              support_count: 2,
-              unsupport_count: 3 },
-
-            comment_count: 2,
-            share_num: 2 },
-
-          {
-            username: "昵称",
-            userpic: "/static/default.jpg",
-            newstime: "2019-10-20 下午04:30",
-            isFollow: false,
-            title: "我是标题3",
-            titlepic: "/static/demo/datapic/11.jpg",
-            support: {
-              type: "unsupport",
-              support_count: 1,
-              unsupport_count: 2 },
-
-            comment_count: 2,
-            share_num: 2 }] };
-
-
-
-
+        if (i < 2) {
+          obj.list = demo;
+        }
         arr.push(obj);
       }
+      // newsList = [obj] 而obj里面有loadmore和list:[],	obj.list = demo,这个demo才是模拟的数据]
       this.newsList = arr;
     },
     // 切换 顶部选项卡

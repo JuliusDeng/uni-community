@@ -10,13 +10,19 @@
 		<swiper :duration="150" :current="tabIndex" @change="onChangeTab" :style="'height:' + scrollH + 'px'">
 			<swiper-item v-for="(item, index) in newsList" :key="index">
 				<scroll-view scroll-y="true" :style="'height:' + scrollH + 'px'" @scrolltolower="loadmore(index)">
+					<template v-if="item.list.length > 0">
 						<!-- 列表样式 -->
-					<block v-for="(item2, index2) in item.list" :key="index2">
-						<common-list v-bind:item="item2" v-bind:index="index2" v-on:follow="follow" @doSupport='doSupport'></common-list>
-						<divider/>
-					</block>
-					<!-- 上拉加载 -->
-					<load-more :loadmore="item.loadmore"></load-more>
+						<block v-for="(item2, index2) in item.list" :key="index2">
+							<common-list v-bind:item="item2" v-bind:index="index2" v-on:follow="follow" @doSupport='doSupport'></common-list>
+							<divider/>
+						</block>
+						<!-- 上拉加载 -->
+						<load-more :loadmore="item.loadmore"></load-more>
+					</template>
+					<template v-else>
+						<nothing></nothing>
+					</template>
+					
 				</scroll-view>
 			</swiper-item>
 		</swiper>
@@ -26,6 +32,53 @@
 </template>
 
 <script>
+	const demo = [
+		{
+			username:"昵称",
+			userpic:"/static/default.jpg",
+			newstime:"2019-10-20 下午04:30",
+			isFollow:false,
+			title:"我是标题1",
+			titlepic:"/static/demo/datapic/11.jpg",
+			support:{
+				type:"",
+				support_count:1,
+				unsupport_count:2
+			},
+			comment_count:2,
+			share_num:2
+		},
+		{
+			username:"昵称",
+			userpic:"/static/default.jpg",
+			newstime:"2019-10-20 下午04:30",
+			isFollow:false,
+			title:"我是标题2",
+			titlepic:"",
+			support:{
+				type:"support",
+				support_count:2,
+				unsupport_count:3
+			},
+			comment_count:2,
+			share_num:2
+		},
+		{
+			username:"昵称",
+			userpic:"/static/default.jpg",
+			newstime:"2019-10-20 下午04:30",
+			isFollow:false,
+			title:"我是标题3",
+			titlepic:"/static/demo/datapic/11.jpg",
+			support:{
+				type:"unsupport",
+				support_count:1,
+				unsupport_count:2
+			},
+			comment_count:2,
+			share_num:2
+		},
+	]
 	import commonList from "@/components/common/common-list.vue"
 	import loadMore from "@/components/common/load-more.vue"
 	
@@ -83,57 +136,14 @@
 					let obj = {
 						// 1.上拉加载更多  2.加载中... 3.没有更多了
 						loadmore: '上拉加载更多',
-						list:[
-							{
-								username:"昵称",
-								userpic:"/static/default.jpg",
-								newstime:"2019-10-20 下午04:30",
-								isFollow:false,
-								title:"我是标题1",
-								titlepic:"/static/demo/datapic/11.jpg",
-								support:{
-									type:"",
-									support_count:1,
-									unsupport_count:2
-								},
-								comment_count:2,
-								share_num:2
-							},
-							{
-								username:"昵称",
-								userpic:"/static/default.jpg",
-								newstime:"2019-10-20 下午04:30",
-								isFollow:false,
-								title:"我是标题2",
-								titlepic:"",
-								support:{
-									type:"support",
-									support_count:2,
-									unsupport_count:3
-								},
-								comment_count:2,
-								share_num:2
-							},
-							{
-								username:"昵称",
-								userpic:"/static/default.jpg",
-								newstime:"2019-10-20 下午04:30",
-								isFollow:false,
-								title:"我是标题3",
-								titlepic:"/static/demo/datapic/11.jpg",
-								support:{
-									type:"unsupport",
-									support_count:1,
-									unsupport_count:2
-								},
-								comment_count:2,
-								share_num:2
-							},
-							
-						]
+						list:[]
+					}
+					if(i < 2) {
+						obj.list = demo
 					}
 					arr.push(obj)
 				}
+				// newsList = [obj] 而obj里面有loadmore和list:[],	obj.list = demo,这个demo才是模拟的数据]
 				this.newsList = arr
 			},
 			// 切换 顶部选项卡
