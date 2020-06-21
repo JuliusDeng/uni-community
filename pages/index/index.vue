@@ -115,6 +115,12 @@
 				}],
 				newsList: []
 			}
+		},		
+		// 监听原生标题栏搜索输入框点击事件
+		onNavigationBarSearchInputClicked() {
+			uni.navigateTo({
+				url: '../search/search',
+			});
 		},
 		// 监听页面加载，其参数为上个页面传递的数据（可用于页面间通讯哦）		
 		onLoad() {

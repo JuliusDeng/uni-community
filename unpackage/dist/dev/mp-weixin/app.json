@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/news/news",
     "pages/msg/msg",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/search/search"
   ],
   "subPackages": [],
   "window": {
@@ -47,5 +48,6 @@
   "usingComponents": {
     "divider": "/components/common/divider",
     "nothing": "/components/common/nothing"
-  }
+  },
+  "sitemapLocation": "sitemap83.json"
 }
