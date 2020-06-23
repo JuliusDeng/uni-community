@@ -257,6 +257,13 @@ var demo = [
       url: '../search/search' });
 
   },
+  // 监听原生标题栏按钮点击事件
+  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
+    console.log(e); // e.index是第几个导航按钮的下标
+    uni.navigateTo({
+      url: '../add-input/add-input' });
+
+  },
   // 监听页面加载，其参数为上个页面传递的数据（可用于页面间通讯哦）		
   onLoad: function onLoad() {var _this = this;
     // 获取屏幕列表高度
