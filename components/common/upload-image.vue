@@ -1,6 +1,6 @@
 <template>
 	<view class="px-2">
-		<view class="uni-uploader">
+		<view class="uni-uploader" v-if="show">
 			<view class="uni-uploader-head">
 				<view class="uni-uploader-title">点击可预览选好的图片</view>
 				<view class="uni-uploader-info">{{imageList.length}}/9</view>
@@ -11,10 +11,12 @@
 						
 						<view class="uni-uploader__file position-relative">
 							<image class="uni-uploader__img rounded" :src="image" :data-src="image" @tap="previewImage" mode="aspectFill"></image>
-							<view class="position-absolute top-0 right-0 rounded" style="padding: 0 15rpx;background-color: rgba(0,0,0,0.5);" @click="deleteImage(index)">
+							
+							<view class="position-absolute top-0 right-0 rounded" style="padding: 0 15rpx;background-color: rgba(0,0,0,0.5);" @click.stop="deleteImage(index)">
 								<text class="iconfont icon-shanchu text-white"></text>
 							</view>
 						</view>
+						
 					</block>
 					<view class="uni-uploader__input-box rounded">
 						<view class="uni-uploader__input" @tap="chooseImage"></view>
@@ -37,6 +39,13 @@
 		['compressed', 'original']
 	]
 	export default {
+		props: {
+			list:Array,
+			show:{
+				type:Boolean,
+				default:true
+			}
+		},
 		data() {
 			return {
 				title: 'choose/previewImage',
@@ -49,6 +58,9 @@
 				count: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 			}
 		},
+		onReady() {
+			this.imageList = this.list
+		},
 		onUnload() {
 			this.imageList = [],
 				this.sourceTypeIndex = 2,
@@ -58,21 +70,21 @@
 				this.countIndex = 8;
 		},
 		methods: {
-			deleteImage(index) {
+			// 删除图片
+			deleteImage(index){
 				uni.showModal({
 					title: '提示',
-					content: '是否删除该图片',
+					content: '是否要删除该图片？',
 					showCancel: true,
 					cancelText: '不删除',
 					confirmText: '删除',
-					success: (res) => {
-						console.log(res);
-						if(res.confirm) {
-							this.imageList.splice(index, 1)
-							this.$emit('change', this.imageList)
+					success: res => {
+						if (res.confirm) {
+							this.imageList.splice(index,1)
+							this.$emit('change',this.imageList)
 						}
-					}
-				})
+					},
+				});
 			},
 			chooseImage: async function() {
 				// #ifdef APP-PLUS
@@ -98,7 +110,7 @@
 					count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList.length : this.count[this.countIndex],
 					success: (res) => {
 						this.imageList = this.imageList.concat(res.tempFilePaths);
-						this.$emit('choose',this.imageList)
+						this.$emit('change',this.imageList)
 					},
 					fail: (err) => {
 						// #ifdef APP-PLUS

@@ -124,7 +124,7 @@
 		},
 		// 监听原生标题栏按钮点击事件
 		onNavigationBarButtonTap(e) {
-			console.log(e); // e.index是第几个导航按钮的下标
+			// console.log(e); // e.index是第几个导航按钮的下标
 			uni.navigateTo({
 				url: '../add-input/add-input'
 			});
