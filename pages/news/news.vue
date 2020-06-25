@@ -25,10 +25,37 @@
 			 <!-- 话题 -->
 			<swiper-item>
 				<scroll-view scroll-y="true" :style="'height:' + scrollH +'px;'">
-					话题列表
+					<!-- 热门分类 -->
+					<hot-cate :hotCate='hotCate'></hot-cate>
+					<!-- 搜索框 -->
+					<view class="p-2">
+						<view class="py-1 rounded flex align-center justify-center text-secondary" style="background-color: #f5f5f5;">
+							<text class="iconfont icon-sousuo mr-2"></text>搜索话题
+						</view>
+					</view>
+					<!-- 轮播图 -->
+					<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular class="px-2 pb-2">
+						<swiper-item class="rounded">
+							<image src="/static/demo/datapic/4.jpg" style="height: 300rpx;" class="w-100"></image>
+						</swiper-item>
+						<swiper-item class="rounded">
+							<image src="/static/demo/datapic/2.jpg" style="height: 300rpx;" class="w-100"></image>
+						</swiper-item>
+						<swiper-item class="rounded">
+							<image src="/static/demo/datapic/3.jpg" style="height: 300rpx;" class="w-100"></image>
+						</swiper-item>
+					</swiper>
+					<divider></divider>
+					<!-- 最近更新 -->
+					<view class="m-2 font-md">最近更新</view>
+					<block v-for="(item, index) in topicList" :key="index">
+						<topic-list :item="item" :index="index"></topic-list>
+					</block>	
+					
 				</scroll-view>
 			</swiper-item>
 		</swiper>
+		
 		
 	</view>
 </template>
@@ -84,12 +111,16 @@
 	import uniNavBar from '@/components/uni-ui/uni-nav-bar/uni-nav-bar.vue'
 	import commonList from '@/components/common/common-list.vue'
 	import loadMore from '@/components/common/load-more.vue'
+	import hotCate from '@/components/news/hot-cate.vue'
+	import topicList from '@/components/news/topic-list.vue'
 	
 	export default {
 		components: {
 			uniNavBar,
 			commonList,
-			loadMore
+			loadMore,
+			hotCate,
+			topicList
 		},
 		data() {
 			return {
@@ -102,7 +133,48 @@
 				// 关注列表
 				list: [],
 				// 1.上拉加载更多  2.加载中... 3.没有更多了
-				loadmore: "上拉加载更多"
+				loadmore: "上拉加载更多",
+				// 热门分类
+				hotCate: [
+					{name: '关注'},
+					{name: '推荐'},
+					{name: '体育'},
+					{name: '热点'},
+					{name: '财经'},
+					{name: '娱乐'},
+				],
+				// 话题列表
+				topicList: [
+					{
+						cover:"/static/demo/topicpic/1.jpeg",
+						title: '话题名称',
+						desc: '话题描述',
+						today_count: 1,
+						news_count: 22
+					},
+					{
+						cover:"/static/demo/topicpic/1.jpeg",
+						title: '话题名称',
+						desc: '话题描述',
+						today_count: 1,
+						news_count: 22
+					},
+					{
+						cover:"/static/demo/topicpic/1.jpeg",
+						title: '话题名称',
+						desc: '话题描述',
+						today_count: 1,
+						news_count: 22
+					},
+					{
+						cover:"/static/demo/topicpic/1.jpeg",
+						title: '话题名称',
+						desc: '话题描述',
+						today_count: 1,
+						news_count: 22
+					},
+				]
+				
 			}
 		},
 		onLoad() {
@@ -126,7 +198,7 @@
 				})
 			},
 			onChangeTab(e) {
-				console.log(e);
+				// console.log(e);
 				this.tabIndex = e.detail.current
 			},
 			// 顶踩操作

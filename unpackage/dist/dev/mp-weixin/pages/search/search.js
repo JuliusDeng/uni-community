@@ -193,7 +193,7 @@ var demo = [{
     unsupport_count: 2 },
 
   comment_count: 2,
-  share_num: 2 }];var commonList = function commonList() {__webpack_require__.e(/*! require.ensure | components/common/common-list */ "components/common/common-list").then((function () {return resolve(__webpack_require__(/*! @/components/common/common-list.vue */ 57));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+  share_num: 2 }];var commonList = function commonList() {__webpack_require__.e(/*! require.ensure | components/common/common-list */ "components/common/common-list").then((function () {return resolve(__webpack_require__(/*! @/components/common/common-list.vue */ 59));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

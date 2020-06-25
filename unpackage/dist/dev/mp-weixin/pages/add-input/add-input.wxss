@@ -1,5 +1,5 @@
 
-.footer-btn {
+.footer-btn{
 	width: 86rpx;
 	height: 86rpx;
 	display: -webkit-box;

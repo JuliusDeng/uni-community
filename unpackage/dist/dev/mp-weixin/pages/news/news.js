@@ -139,20 +139,245 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;} //
 //
 //
 //
 //
 //
-var _default =
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var demo = [
 {
+  username: "昵称",
+  userpic: "/static/default.jpg",
+  newstime: "2019-10-20 下午04:30",
+  isFollow: true,
+  title: "我是标题1",
+  titlepic: "/static/demo/datapic/11.jpg",
+  support: {
+    type: "",
+    support_count: 1,
+    unsupport_count: 2 },
+
+  comment_count: 2,
+  share_num: 2 },
+
+{
+  username: "昵称",
+  userpic: "/static/default.jpg",
+  newstime: "2019-10-20 下午04:30",
+  isFollow: true,
+  title: "我是标题2",
+  titlepic: "",
+  support: {
+    type: "support",
+    support_count: 2,
+    unsupport_count: 3 },
+
+  comment_count: 2,
+  share_num: 2 },
+
+{
+  username: "昵称",
+  userpic: "/static/default.jpg",
+  newstime: "2019-10-20 下午04:30",
+  isFollow: true,
+  title: "我是标题3",
+  titlepic: "/static/demo/datapic/11.jpg",
+  support: {
+    type: "unsupport",
+    support_count: 1,
+    unsupport_count: 2 },
+
+  comment_count: 2,
+  share_num: 2 }];var uniNavBar = function uniNavBar() {__webpack_require__.e(/*! require.ensure | components/uni-ui/uni-nav-bar/uni-nav-bar */ "components/uni-ui/uni-nav-bar/uni-nav-bar").then((function () {return resolve(__webpack_require__(/*! @/components/uni-ui/uni-nav-bar/uni-nav-bar.vue */ 71));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var commonList = function commonList() {__webpack_require__.e(/*! require.ensure | components/common/common-list */ "components/common/common-list").then((function () {return resolve(__webpack_require__(/*! @/components/common/common-list.vue */ 59));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var loadMore = function loadMore() {__webpack_require__.e(/*! require.ensure | components/common/load-more */ "components/common/load-more").then((function () {return resolve(__webpack_require__(/*! @/components/common/load-more.vue */ 66));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hotCate = function hotCate() {__webpack_require__.e(/*! require.ensure | components/news/hot-cate */ "components/news/hot-cate").then((function () {return resolve(__webpack_require__(/*! @/components/news/hot-cate.vue */ 78));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var topicList = function topicList() {__webpack_require__.e(/*! require.ensure | components/news/topic-list */ "components/news/topic-list").then((function () {return resolve(__webpack_require__(/*! @/components/news/topic-list.vue */ 83));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+{
+  components: {
+    uniNavBar: uniNavBar,
+    commonList: commonList,
+    loadMore: loadMore,
+    hotCate: hotCate,
+    topicList: topicList },
+
   data: function data() {
-    return {};
+    return {
+      scrollH: 500,
+      tabIndex: 0,
+      tabBars: [
+      { name: '关注' },
+      { name: '话题' }],
+
+      // 关注列表
+      list: [],
+      // 1.上拉加载更多  2.加载中... 3.没有更多了
+      loadmore: "上拉加载更多",
+      // 热门分类
+      hotCate: [
+      { name: '关注' },
+      { name: '推荐' },
+      { name: '体育' },
+      { name: '热点' },
+      { name: '财经' },
+      { name: '娱乐' }],
+
+      // 话题列表
+      topicList: [
+      {
+        cover: "/static/demo/topicpic/1.jpeg",
+        title: '话题名称',
+        desc: '话题描述',
+        today_count: 1,
+        news_count: 22 },
+
+      {
+        cover: "/static/demo/topicpic/1.jpeg",
+        title: '话题名称',
+        desc: '话题描述',
+        today_count: 1,
+        news_count: 22 },
+
+      {
+        cover: "/static/demo/topicpic/1.jpeg",
+        title: '话题名称',
+        desc: '话题描述',
+        today_count: 1,
+        news_count: 22 },
+
+      {
+        cover: "/static/demo/topicpic/1.jpeg",
+        title: '话题名称',
+        desc: '话题描述',
+        today_count: 1,
+        news_count: 22 }] };
+
+
 
 
   },
-  methods: {} };exports.default = _default;
+  onLoad: function onLoad() {var _this = this;
+    uni.getSystemInfo({
+      success: function success(res) {
+        _this.scrollH = res.windowHeight - res.statusBarHeight - 44;
+      } }),
+
+    // 加载测试数据
+    this.list = demo;
+  },
+  methods: {
+    // 切换选项卡
+    changeTab: function changeTab(index) {
+      this.tabIndex = index;
+    },
+    // 右上角打开发布页
+    openAddInput: function openAddInput() {
+      uni.navigateTo({
+        url: '../add-input/add-input' });
+
+    },
+    onChangeTab: function onChangeTab(e) {
+      // console.log(e);
+      this.tabIndex = e.detail.current;
+    },
+    // 顶踩操作
+    doSupport: function doSupport(e) {
+      // 拿到当前对象
+      var item = this.list[e.index];
+      var msg = e.type === 'support' ? '顶' : '踩';
+      // 之前没有操作过
+      if (item.support.type === '') {
+        item.support[e.type + '_count']++;
+      } else if (item.support.type === 'support' && e.type === 'unsupport') {
+        // 顶 - 1
+        item.support.support_count--;
+        // 踩 + 1
+        item.support.unsupport_count++;
+      } else if (item.support.type === 'unsupport' && e.type === 'support') {// 之前踩了
+        // 顶 + 1
+        item.support.support_count++;
+        // 踩 - 1
+        item.support.unsupport_count--;
+      }
+      item.support.type = e.type;
+      uni.showToast({ title: msg + '成功' });
+    },
+    loadmoreEvent: function loadmoreEvent() {var _this2 = this;
+      if (this.loadmore !== '上拉加载更多') {
+        return;
+      }
+      setTimeout(function () {
+        _this2.loadmore = '加载中...';
+        // 模拟请求数据
+        setTimeout(function () {
+          _this2.list = [].concat(_toConsumableArray(_this2.list), _toConsumableArray(_this2.list));
+          _this2.loadmore = '上拉加载更多';
+        }, 3000);
+      }, 3000);
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 ],[[17,"common/runtime","common/vendor"]]]);

@@ -4,11 +4,12 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false
+    "urlCheck": false,
+    "postcss": true
   },
   "compileType": "miniprogram",
   "libVersion": "",
-  "appid": "touristappid",
+  "appid": "wxaf7dfd0dec920036",
   "projectname": "社交项目_by邓宇辰",
   "condition": {
     "search": {
