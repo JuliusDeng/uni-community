@@ -71,6 +71,9 @@
 		onNavigationBarButtonTap(e) {
 			switch (e.index) {
 				case 0 : // 点击的左边按钮
+				uni.navigateTo({
+					url: "../user-list/user-list"
+				})
 					this.$refs.popup.close()
 					break;
 				case 1 : // 点击的右边按钮
