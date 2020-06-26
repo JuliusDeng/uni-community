@@ -1,1 +1,1 @@
-<view>消息页</view>
+<view><block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index"><block><msg-list vue-id="{{'353d4f88-1-'+index}}" item="{{item}}" index="{{index}}" bind:__l="__l"></msg-list></block></block></view>
