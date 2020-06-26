@@ -36,6 +36,7 @@
 		}, {
 			"path": "pages/msg/msg",
 			"style": {
+				"enablePullDownRefresh":true,
 				// "navigationBarTitleText":"消息列表",
 				"app-plus": {
 					"titleNView":{

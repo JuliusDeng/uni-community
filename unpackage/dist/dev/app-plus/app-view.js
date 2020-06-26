@@ -2850,9 +2850,15 @@ var render = function() {
     "v-uni-view",
     { attrs: { _i: 0 } },
     [
-      _vm._l(_vm._$g(1, "f"), function(item, index, $20, $30) {
-        return [_c("msg-list", { key: item["k0"], attrs: { _i: "2-" + $30 } })]
-      })
+      _vm._$g(1, "i")
+        ? [
+            _vm._l(_vm._$g(2, "f"), function(item, index, $20, $30) {
+              return [
+                _c("msg-list", { key: item["k0"], attrs: { _i: "3-" + $30 } })
+              ]
+            })
+          ]
+        : [_c("nothing", { attrs: { _i: 5 } })]
     ],
     2
   )
