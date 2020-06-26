@@ -6,7 +6,8 @@
     "pages/my/my",
     "pages/search/search",
     "pages/add-input/add-input",
-    "pages/topic-nav/topic-nav"
+    "pages/topic-nav/topic-nav",
+    "pages/topic-detail/topic-detail"
   ],
   "subPackages": [],
   "window": {
@@ -50,5 +51,6 @@
   "usingComponents": {
     "divider": "/components/common/divider",
     "nothing": "/components/common/nothing"
-  }
+  },
+  "sitemapLocation": "sitemap3.json"
 }
