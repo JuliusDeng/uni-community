@@ -1,5 +1,5 @@
 <template>
-	<view class="flex mx-2">
+	<view class="flex mx-2" @click="open">
 		<image :src="item.cover" style="width: 150rpx;height: 150rpx;" class="rounded mr-2"></image>
 		<view class="flex flex-column flex-1">
 			<text class="font-md">#{{item.title}}#</text>
@@ -14,11 +14,19 @@
 
 <script>
 	export default {
-		props:['item', 'index']
-		// props:{
-		// 	item: Object,
-		// 	index: Number
-		// }
+		// props:['item', 'index']
+		props:{
+			item: Object,
+			index: Number
+		},
+		methods: {
+			open() {
+				console.log(111);
+				uni.navigateTo({
+					url: "../../pages/topic-detail/topic-detail?detail=" +JSON.stringify(this.item)
+				})
+			}
+		}
 	}
 </script>
 

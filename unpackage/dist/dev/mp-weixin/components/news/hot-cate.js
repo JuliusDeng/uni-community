@@ -112,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -134,11 +134,14 @@ var _default =
   props: ['hotCate'],
   methods: {
     openMore: function openMore() {
-      console.log('hotCate - more');
+      uni.navigateTo({
+        url: '../../pages/topic-nav/topic-nav' });
+
     },
     openDetail: function openDetail() {
       console.log('打开热门分类详情');
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

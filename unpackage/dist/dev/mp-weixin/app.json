@@ -5,7 +5,8 @@
     "pages/msg/msg",
     "pages/my/my",
     "pages/search/search",
-    "pages/add-input/add-input"
+    "pages/add-input/add-input",
+    "pages/topic-nav/topic-nav"
   ],
   "subPackages": [],
   "window": {

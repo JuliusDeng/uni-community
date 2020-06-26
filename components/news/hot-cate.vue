@@ -20,7 +20,9 @@
 		props: ['hotCate'],
 		methods: {
 			openMore() {
-				console.log('hotCate - more');
+				uni.navigateTo({
+					url: '../../pages/topic-nav/topic-nav'
+				})
 			},
 			openDetail() {
 				console.log('打开热门分类详情');
