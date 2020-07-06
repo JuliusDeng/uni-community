@@ -1,5 +1,5 @@
 <template>
-	<text v-if="text" :class="inverted ? 'uni-badge-' + type + ' uni-badge--' + size + ' uni-badge-inverted' : 'uni-badge-' + type + ' uni-badge--' + size" class="uni-badge" @click="onClick()">{{ text }}</text>
+	<view v-if="text" :class="inverted ? 'uni-badge-' + type + ' uni-badge--' + size + ' uni-badge-inverted' : 'uni-badge-' + type + ' uni-badge--' + size" class="uni-badge" @click="onClick()"><slot></slot> {{ text }}</view>
 </template>
 
 <script>
@@ -8,6 +8,7 @@
 		props: {
 			type: {
 				type: String,
+				// success绿色，primary蓝色，error红色，warning黄色
 				default: 'default'
 			},
 			inverted: {

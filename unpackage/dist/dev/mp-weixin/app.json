@@ -51,7 +51,7 @@
   },
   "usingComponents": {
     "divider": "/components/common/divider",
-    "nothing": "/components/common/nothing"
+    "no-thing": "/components/common/nothing"
   },
-  "sitemapLocation": "sitemap38.json"
+  "sitemapLocation": "sitemap61.json"
 }

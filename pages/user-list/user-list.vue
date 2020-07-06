@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<!-- tab -->
-		<view class="flex align-center py-2">
+		<view class="flex align-center" style="height: 100rpx;">
 			<view class="flex-1 flex align-center justify-center"
 			v-for="(item,index) in tabBars" :key="index"
 			:class="index === tabIndex ? 'font-lg font-weight-bold text-main':'font-md'"
@@ -20,23 +20,12 @@
 						<block v-for="(item2,index2) in item.list" :key="index2">
 							
 							<!-- 列表样式 -->
-							<view class="p-2 flex align-center border-bottom border-light-secondary">
-								<image src="/static/default.jpg"
-								style="width: 100rpx;height: 100rpx;"
-								class="rounded-circle mr-2"></image>
-								<view class="flex flex-column flex-1">
-									<text class="font-md text-dark">昵称</text>
-									<text>性别2</text>
-								</view> 
-								<view class="uni-icon uni-icon-checkbox-filled text-light-muted"></view>
-							</view>
-							
-							
+							<user-list :item="item2" :index="index"></user-list>
 							
 							
 						</block>
 						<!-- 上拉加载 -->
-						<load-more :loadmore="item.loadmore"></load-more>
+						<load-more v-if="item.list.length > 10" :loadmore="item.loadmore"></load-more>
 					</template>
 					<!-- 无数据 -->
 					<template v-else>
@@ -51,10 +40,27 @@
 </template>
 
 <script>
+	
+	const demo = [{
+		avatar:"/static/default.jpg",
+		username:"昵称",
+		sex:1, // 0未知，1女性，2男性
+		age:24,
+		isFollow:true
+	},{
+		avatar:"/static/default.jpg",
+		username:"昵称",
+		sex:2, // 0未知，1女性，2男性
+		age:24,
+		isFollow:false
+	}];
+	
 	import loadMore from '@/components/common/load-more.vue';
+	import userList from '@/components/user-list/user-list.vue';
 	export default {
 		components: {
 			loadMore,
+			userList
 		},
 		data() {
 			return {
@@ -89,7 +95,7 @@
 		onLoad() {
 			uni.getSystemInfo({
 				success:res=>{
-					this.scrollH = res.windowHeight - uni.upx2px(101)
+					this.scrollH = res.windowHeight - uni.upx2px(100)
 				}
 			})
 			// 根据选项生成列表
@@ -107,7 +113,7 @@
 						list:[]
 					}
 					if (i < 2) {
-						obj.list = [1,2,3,4,5]
+						obj.list = demo
 					}
 					arr.push(obj)
 				}

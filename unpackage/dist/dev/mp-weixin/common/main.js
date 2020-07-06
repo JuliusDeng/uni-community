@@ -15,7 +15,7 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));function 
 _vue.default.component('divider', divider);
 // 引入全局nothing组件
 var nothing = function nothing() {__webpack_require__.e(/*! require.ensure | components/common/nothing */ "components/common/nothing").then((function () {return resolve(__webpack_require__(/*! @/components/common/nothing.vue */ 72));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
-_vue.default.component('nothing', nothing);
+_vue.default.component('no-thing', nothing);
 // 引入时间库
 
 

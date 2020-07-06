@@ -143,6 +143,23 @@
             	}
             }
         }
+        ,{
+            "path" : "pages/user-chat/user-chat",
+            "style" : {
+							"app-plus": {
+								"titleNView":{
+									"buttons":[{
+										"color":"#333333",
+										"colorPressed":"#FD597C",
+										"float":"right",
+										"fontSize":"20px",
+										"fontSrc":"/static/iconfont.ttf",
+										"text":"\ue628"
+									}]
+								} 
+							}
+						}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
