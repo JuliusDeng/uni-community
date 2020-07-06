@@ -1,4 +1,5 @@
 /unpackage
 /node_modules
 unpackage/
+unpackage/*
 node_modules/

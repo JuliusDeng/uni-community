@@ -26,7 +26,7 @@
 								class="rounded-circle mr-2"></image>
 								<view class="flex flex-column flex-1">
 									<text class="font-md text-dark">昵称</text>
-									<text>性别</text>
+									<text>性别2</text>
 								</view> 
 								<view class="uni-icon uni-icon-checkbox-filled text-light-muted"></view>
 							</view>
