@@ -7,7 +7,8 @@
     "pages/search/search",
     "pages/add-input/add-input",
     "pages/topic-nav/topic-nav",
-    "pages/topic-detail/topic-detail"
+    "pages/topic-detail/topic-detail",
+    "pages/user-list/user-list"
   ],
   "subPackages": [],
   "window": {
@@ -52,5 +53,5 @@
     "divider": "/components/common/divider",
     "nothing": "/components/common/nothing"
   },
-  "sitemapLocation": "sitemap3.json"
+  "sitemapLocation": "sitemap38.json"
 }

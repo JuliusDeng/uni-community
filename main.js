@@ -6,7 +6,7 @@ import divider from "@/components/common/divider.vue"
 Vue.component('divider', divider)
 // 引入全局nothing组件
 import nothing from "@/components/common/nothing.vue"
-Vue.component('nothing', nothing)
+Vue.component('no-thing', nothing)
 // 引入时间库
 
 

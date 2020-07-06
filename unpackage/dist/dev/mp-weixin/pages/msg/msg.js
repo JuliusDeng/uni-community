@@ -128,53 +128,116 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var msgList = function msgList() {Promise.all(/*! require.ensure | components/msg/msg-list */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/msg/msg-list")]).then((function () {return resolve(__webpack_require__(/*! @/components/msg/msg-list.vue */ 146));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-
-
-
-
-
-
-
+var demo = [{
+  avatar: "/static/default.jpg",
+  username: "帝莎编程",
+  update_time: 1570718427,
+  data: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+  noread: '1' },
+{
+  avatar: "/static/default.jpg",
+  username: "帝莎编程",
+  update_time: 1570718427,
+  data: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+  noread: '2' }];var msgList = function msgList() {Promise.all(/*! require.ensure | components/msg/msg-list */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/msg/msg-list")]).then((function () {return resolve(__webpack_require__(/*! @/components/msg/msg-list.vue */ 106));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniPopup = function uniPopup() {__webpack_require__.e(/*! require.ensure | components/uni-ui/uni-popup/uni-popup */ "components/uni-ui/uni-popup/uni-popup").then((function () {return resolve(__webpack_require__(/*! @/components/uni-ui/uni-popup/uni-popup.vue */ 112));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
 
 {
   components: {
-    msgList: msgList },
+    msgList: msgList,
+    uniPopup: uniPopup },
 
   data: function data() {
     return {
-      list: [{
-        avatar: "/static/default.jpg",
-        username: "帝莎编程",
-        update_time: 1593164037,
-        data: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-        noread: 20 },
-      {
-        avatar: "/static/default.jpg",
-        username: "帝莎编程",
-        update_time: 1593164037,
-        data: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-        noread: 20 },
-      {
-        avatar: "/static/default.jpg",
-        username: "帝莎编程",
-        update_time: 1593164037,
-        data: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-        noread: 20 },
-      {
-        avatar: "/static/default.jpg",
-        username: "帝莎编程",
-        update_time: 1593164037,
-        data: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-        noread: 20 }] };
-
+      list: [] };
 
   },
-  methods: {} };exports.default = _default;
+  // 页面加载
+  onLoad: function onLoad() {
+    this.list = demo;
+    // setTimeout(function () {
+    // 		console.log('111');
+    // 		uni.startPullDownRefresh();
+    // }, 2000);
+
+  },
+  // 监听下拉刷新
+  onPullDownRefresh: function onPullDownRefresh() {
+    this.refresh();
+    console.log('222');
+    // setTimeout(function () {
+    //     uni.stopPullDownRefresh();
+    // }, 2000); 
+  },
+  // 监听原生导航栏的按钮事件
+  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
+    switch (e.index) {
+      case 0: // 点击的左边按钮
+        uni.navigateTo({
+          url: "../user-list/user-list" });
+
+        this.$refs.popup.close();
+        break;
+      case 1: // 点击的右边按钮
+        this.$refs.popup.open();
+        break;}
+
+  },
+  methods: {
+    // 下拉刷新
+    refresh: function refresh() {var _this = this;
+      setTimeout(function () {
+        console.log(333);
+        console.log('上：', _this.list);
+        _this.list = [].concat(_toConsumableArray(_this.list), _toConsumableArray(_this.list));
+        console.log('下：', _this.list);
+        // 停止下拉刷新
+        uni.stopPullDownRefresh();
+      }, 2000);
+    },
+    // 弹出层选项点击事件
+    popupEvent: function popupEvent(e) {
+      // 如果 JavaScript 遇到 break 关键词，它会跳出 switch 代码块。此举将停止代码块中更多代码的执行以及 case 测试。
+      switch (e) {
+        case 'friend':
+          console.log('friend');
+          break;
+        case 'clear':
+          console.log('clear');
+          break;}
+      ;
+      // 关闭弹出层
+      this.$refs.popup.close();
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

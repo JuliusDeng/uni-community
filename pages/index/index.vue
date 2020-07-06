@@ -95,23 +95,23 @@
 				scrollInto: '',
 				tabIndex: 0,
 				tabBars: [{
-				    name: '关注',
-				}, {
-				    name: '推荐',
-				}, {
-				    name: '体育',
-				}, {
-				    name: '热点',
-				}, {
-				    name: '财经',
-				}, {
-				    name: '娱乐',
-				}, {
-				    name: '军事',
-				}, {
-				    name: '历史',
-				}, {
-				    name: '本地',
+							name: '关注',
+					}, {
+							name: '推荐',
+					}, {
+							name: '体育',
+					}, {
+							name: '热点',
+					}, {
+							name: '财经',
+					}, {
+							name: '娱乐',
+					}, {
+							name: '军事',
+					}, {
+							name: '历史',
+					}, {
+							name: '本地',
 				}],
 				newsList: []
 			}

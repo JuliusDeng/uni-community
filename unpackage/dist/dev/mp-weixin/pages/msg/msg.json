@@ -1,5 +1,7 @@
 {
+  "enablePullDownRefresh": true,
   "usingComponents": {
-    "msg-list": "/components/msg/msg-list"
+    "msg-list": "/components/msg/msg-list",
+    "uni-popup": "/components/uni-ui/uni-popup/uni-popup"
   }
 }
